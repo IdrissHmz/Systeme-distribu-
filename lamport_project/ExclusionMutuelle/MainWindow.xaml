@@ -1,0 +1,104 @@
+﻿<controls:MetroWindow
+    Name="window1"    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" 
+        x:Class="Lamport.MainWindow"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        ResizeMode="CanMinimize"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        Title="Lamport" Height="400" Width="550" ShowIconOnTitleBar="False"
+        xmlns:c="clr-namespace:Lamport"
+        Top="200"
+        Left="450"
+        Closing="close"
+   
+    >
+    <!--Icon=".\\lamport.jpg"-->
+
+    <controls:MetroWindow.WindowCommands>
+        <controls:WindowCommands>
+            <Button Content="settings" />
+        </controls:WindowCommands>
+    </controls:MetroWindow.WindowCommands>
+
+    <Grid Margin="0,0,0,0">
+        <TabControl>
+
+            <TabItem Header="Configuration" FontSize="8" controls:ControlsHelper.HeaderFontSize="18" >
+                <Grid>
+                    <Slider TextBlock.FontSize="20" x:Name="slider1"  Width="150" Value="5" Margin="223,22,43,281" ValueChanged="slider1_ValueChanged" Minimum="2" Maximum="10"/>
+                    <TextBlock Text="Nombre de sites"  FontSize="14" Foreground="DarkOliveGreen"  Height="30" Margin="52,26,315.4,279.2"/>
+                    <TextBlock Name="slider1_res" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="DarkOliveGreen" FontSize="16" Text="5" VerticalAlignment="Top" Margin="357,5,0,0" Height="25" Width="27"/>
+                    <Button Content="Lancer la simulation" HorizontalAlignment="Left" Margin="52,290,0,0" VerticalAlignment="Top" Width="140" Click="Button_Click" RenderTransformOrigin="0.512,0.529"/>
+
+                    <controls:RangeSlider
+            Name="D_S_C"
+            Width="150"
+            Height="30"
+            Maximum="15"
+            Minimum="1"
+            FontSize="16"
+            
+            LowerValue="{Binding Path=CurrentMinValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            UpperValue="{Binding Path=CurrentMaxValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+             
+            AutoToolTipPlacement="TopLeft"  MoveWholeRange="True"
+            IsSnapToTickEnabled="True"  ExtendedMode="True" Margin="223,60,43,249" RangeSelectionChanged="D_S_C_RangeSelectionChanged"></controls:RangeSlider>
+                    <TextBlock Text="Durée de la SC"  FontSize="14" Foreground="DarkOliveGreen"  Height="30" Margin="52,65,322.4,240.2"/>
+                    <controls:RangeSlider  
+            Name="A_H_S_C"
+        	Width="150"
+        	Height="30"
+            Maximum="15"
+            Minimum="1"
+        	FontSize="16"
+        	
+        	LowerValue="{Binding CurrentMinValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        	UpperValue="{Binding CurrentMaxValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+             
+        	AutoToolTipPlacement="TopLeft"  MoveWholeRange="True"
+        	IsSnapToTickEnabled="True"  ExtendedMode="True" Margin="223,104,43,205"/>
+                    <TextBlock Text="Attente hors SC"  FontSize="14" Foreground="DarkOliveGreen"  Height="30" Margin="52,109,321.4,196.2"/>
+                    <controls:RangeSlider 
+            Name="T_A"
+        	Width="150"
+        	Height="30"
+            Maximum="100"
+            Minimum="10"
+        	FontSize="16"
+        	
+        	LowerValue="{Binding CurrentMinValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        	UpperValue="{Binding CurrentMaxValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+             
+        	AutoToolTipPlacement="TopLeft"  MoveWholeRange="True"
+        	IsSnapToTickEnabled="True"  ExtendedMode="True" Margin="223,146,43,163"/>
+                    <TextBlock Text="Temps d'acheminement"  FontSize="14" Foreground="DarkOliveGreen"  Height="30" Margin="52,151,314.4,154.2"/>
+                    <controls:RangeSlider  
+            Name="D_P"
+        	Width="150"
+        	Height="30"
+            Maximum="30"
+            Minimum="10"
+        	FontSize="16"
+                        
+        	LowerValue="{Binding CurrentMinValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        	UpperValue="{Binding CurrentMaxValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+             
+        	AutoToolTipPlacement="TopLeft"  MoveWholeRange="True"
+        	IsSnapToTickEnabled="True"  ExtendedMode="True" Margin="223,229,43,80"/>
+                    <TextBlock Text="Durée de la panne"  FontSize="14" Foreground="DarkOliveGreen"  Height="30" Margin="52,233,306.4,72.2"/>
+                    <Slider TextBlock.FontSize="20" x:Name="slider2"  Width="150" Value="0" Margin="284,194,104.4,116.2" ValueChanged="slider2_ValueChanged" Minimum="0" Maximum="0.5"/>
+                    <TextBlock Text="Probabilité de la panne"  FontSize="14" Foreground="DarkOliveGreen"  Height="30" Margin="52,195,294.4,110.2"/>
+                    <TextBlock x:Name="slider2_res" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="DarkOliveGreen" FontSize="16" Text="0" VerticalAlignment="Top" Margin="353,175,0,0" Height="25" Width="37"/>
+                    <controls:MetroProgressBar  Name="ProgrssBar" IsIndeterminate="True" Visibility="Hidden" Height="10" Width="300" Margin="0,304,0,7"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+</controls:MetroWindow>
+    
+    
